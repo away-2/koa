@@ -1,8 +1,19 @@
 const Koa = require('koa')
 const config = require('./config/default')
 const app = new Koa()
+const path = require('path')
+const views = require('koa-views')
+const staticCache = require('koa-static-cache')
+// mvc
 const signupRouter = require('./routers/signup')
 const postsRouter = require('./routers/posts')
+// views 在哪里
+app.use(staticCache(path.join(__dirname,'./public'),{dynamic:true},{
+    maxAge: 30*24*60*60
+}))
+app.use(views(path.join(__dirname,'./views'),{
+    extension: 'ejs'
+}))
 
 // 如何记录一个请求所花时间
 // 启用中间件 第一个 计时开始

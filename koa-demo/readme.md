@@ -40,3 +40,75 @@
         多个路由中间件
         如果url  method 和当前洋葱模型执行顺序里的路由中间件匹配， 进入控制器函数执行
         不匹配？how？ -》 next()
+
+- koa view 层
+    1. 传统的MVC 
+        经典的后端架构方案和设计模式
+        router -> controller(数据准备， 逻辑) -> views (html)
+    2. ctx.render 
+        ctx -> 上下文环境  req + res
+        省略 response
+        ctx.render = ctx.response.render
+    3. views 目录和view 层
+        需要配置
+    4. 使用ejs 模板引擎
+        {{}}
+        <%= %>
+        for 
+        模板编译后 完整的输出给浏览器
+        前后端分离 只有一个挂载点 vue component 动态
+        - MVVM 大型项目， 大公司团队协作
+            前后端分离 更合适 应用打开更快， 体验好，  不会摆平一下
+        - 前后端分离缺点？
+            SEO  极其差    #root  百度  不会解析js  ajax  数据
+            对于手机app 里  无所谓SEO 的 体验为先 Mobile First
+            掘金  csdn  搜狐   非常在乎SEO  不合适
+            掘金要放弃vue MVVM  回归MVC 吗？
+            服务器端渲染的VUE  Nuxt 
+        - MVC 有点SEO
+        - koa-views views 中间件 挂载在app上 
+            - 配置views 所在
+                ctx.render  指定模板的名字
+            - 指定模板引擎  ejs  pug
+                <%= %>
+            - 洋葱模型顺序  views 中间件  功能准备型中间件  放置在路由中间件前面
+        - ctx.render
+            模板在服务器端编译  返回所有的html  对SEO 很友好
+                爬虫  也是通过发送请求来建立内容分析 curl 
+        - PC 端入口在百度
+        - 移动端在应用市场 MVVM
+
+- meta viewport 
+    head 中 meta 通常用于丰富页面的信息和属性
+    description
+    keywords 掘金，稀土，Vue.js,前端面试题，Kotlin,ReactNative,Python
+    viewport 用于适配 PC 端不用，
+    移动端 width=device-width, initial-scale=1.0, user-scalable=no
+    乔布斯iphone开创了移动时代，PC更多， user-scalable 两个手指缩放页面
+    1024px  pc  -> 750 手机   很小？ 很大
+    现在过时了  Mobile First user-scalable=no  禁用缩放
+    缩放有时候会误操作  触发回到上一页  下一页  
+    www.taobao.com   ->  m.taobao.com   301
+    PC   一套   nuxt
+    mobile  SPA
+
+- 静态资源koa处理
+    - css  js  image  静态资源
+        - 不归路由(逻辑，数据库，服务器端内存等)管  服务器集群中
+        - 前端写的绝大多数都是静态资源 webpack  vite  打包  dist/
+            未来会单独放在cdn 服务器  前端缓存
+    - 单独处理静态资源路由
+    - http://localhost:3000/index.css
+        静态服务器 + 缓存 koa-static-cache
+        - / 在动态服务器（路由）里面， 进入首页
+        - / 在静态服务器中   静态服务器中间件放在  路由前面
+            / -> 配置的  /public
+        - 时间内，  客户端不用再请求， http 优化的重要理解
+            200  第一次
+            2..  304  Not Modified
+            maxAge  一定会去服务器再请求， 再更新
+
+        
+
+
+

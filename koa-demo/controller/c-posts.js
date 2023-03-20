@@ -1,3 +1,3 @@
-exports.getPosts = (ctx) =>{
-    ctx.response,body = '文章'
+exports.getPosts = (ctx,next) =>{
+    ctx.response.body = '文章'
 }
