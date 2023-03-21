@@ -130,5 +130,18 @@
     bodyParser   await 收集 == length next()
     1 next()    2
 
+- node 做后端
+    优点是 异步 与其他后端语言不一样的 性能好， no blocking 
+    一台服务器， 上限是同时在线5000人， 并发nginx/tomcat 
+    php/Java/python  同步的  blocking 在sql请求(I/O)耗时任务中  占据线程
+    node 异步的， 有event loop  在sql请求(I/O)耗时任务中  进入event loop
+    nginx/tomcat    线程就会被释放  不会阻塞  no blocking
+    省掉很多服务器   支持高并发
+    java c++ 多线程  
+    node  单线程  服务器易崩   所有用户都不响应  try catch 
+    pm2  进程管理工具 
+
+
+
 
 
