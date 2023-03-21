@@ -4,6 +4,7 @@ const app = new Koa()
 const path = require('path')
 const views = require('koa-views')
 const staticCache = require('koa-static-cache')
+const bodyParser = require('koa-bodyparser')
 // mvc
 const signupRouter = require('./routers/signup')
 const postsRouter = require('./routers/posts')
@@ -13,6 +14,10 @@ app.use(staticCache(path.join(__dirname,'./public'),{dynamic:true},{
 }))
 app.use(views(path.join(__dirname,'./views'),{
     extension: 'ejs'
+}))
+
+app.use(bodyParser({
+    formLimit: '1mb'
 }))
 
 // 如何记录一个请求所花时间
