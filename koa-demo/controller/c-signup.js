@@ -40,7 +40,6 @@ exports.getSignup = async ctx =>{
         return 
     }
   
-
     try{
          const data = await userModel.findDataCountByName(name)
     }catch(err){
