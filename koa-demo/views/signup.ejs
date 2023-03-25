@@ -63,7 +63,7 @@
                     canvas.height = 100;
                     ctx.clearRect(0,0,100,100)  // 清空
                     ctx.drawImage(image,0,0,100,100) // 画上去
-                    const blob = canvas.toDataURL('image/png/gif');  // base64 url
+                    const blob = canvas.toDataURL('image/png');  // base64 url
                     $('#avatarVal').val(blob)
 
                 }
@@ -100,7 +100,14 @@
                 cache: false,
                 dataType: 'json',
                 success: function(msg){
-
+                    if(msg.code === 200) {
+                        console.log('注册成功')
+                        setTimeout(() => {
+                            window.location.href="/signin"
+                        },1000)
+                    }else {
+                        console.log(msg.message)
+                    }
                 }
             })
         })

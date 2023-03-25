@@ -33,7 +33,10 @@ exports.findDataCountByName = (name) => {
     let _sql = `select count(*) as count from users where name="${name}"`
     return query(_sql)
 }
-
+exports.insertData = (value) => {
+    let _sql = "insert into users set name=?, pass=?, avatar=?,moment=?;"
+    return querry(_sql,value)
+}
 let users = 
     `create table if not exists users(
         id INT NOT NULL AUTO_INCREMENT,

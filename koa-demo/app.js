@@ -7,9 +7,10 @@ const staticCache = require('koa-static-cache')
 const bodyParser = require('koa-bodyparser')
 // mvc
 const signupRouter = require('./routers/signup')
+const signinRouter = require('./routers/signin')
 const postsRouter = require('./routers/posts')
 // views 在哪里
-app.use(staticCache(path.join(__dirname,'./public'),{dynamic:true},{
+app.use(staticCache(path.join(__dirname,'./public/images'),{dynamic:true},{
     maxAge: 30*24*60*60
 }))
 app.use(views(path.join(__dirname,'./views'),{
@@ -70,6 +71,7 @@ app.use(bodyParser({
 
 
 app.use(signupRouter.routes())
+app.use(signinRouter.routes())
 app.use(postsRouter.routes())
 app.listen(config.port)
 
