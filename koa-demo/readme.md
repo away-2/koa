@@ -202,6 +202,16 @@
     2. cookie 性能不好
     3. token 小，生成 json 对象   session要那么多空间
     
+- 关系型数据库
+MYSQL  SQLServer  表关联
+User 1 n  Posts
+Posts  1  n  Comments
+Key    Primary  Key  Uniq Key  Foregin  Key
+Key  组合   查询业务的频繁度
+索引 在内存中
+- NOSQL
+- 数据冗余
+name 有利于列表页单表查询 
 
 
 

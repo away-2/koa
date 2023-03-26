@@ -9,7 +9,7 @@ const bodyParser = require('koa-bodyparser')
 const signupRouter = require('./routers/signup')
 const signinRouter = require('./routers/signin')
 const signoutRouter = require('./routers/signout')
-const postRouter = require('./routers/posts')
+const postsRouter = require('./routers/posts')
 const session = require('koa-session')
 // const MysqlStore = require('koa-mysql-session')
 
@@ -98,7 +98,7 @@ app.use(bodyParser({
 app.use(signupRouter.routes())
 app.use(signinRouter.routes())
 app.use(signoutRouter.routes())
-app.use(postRouter.routes())
+app.use(postsRouter.routes())
 
 app.listen(config.port)
 
