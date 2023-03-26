@@ -1,6 +1,6 @@
-const routers = require('koa-router')();
+const router = require('koa-router')();
 const controller = require('../controller/c-posts')
 
-routers.get('/posts',controller.getPosts)
+router.get('/posts',controller.getPosts)
 
-module.exports = routers
+module.exports = router

@@ -176,7 +176,32 @@
 
     http  带上cookie  session 解析出相应的对象
 
+- cooie session  jwt
+    1. cookie  每次都会带上http
+        文本，  不能太大， 影响http的性能
+    2. cookie 在客户端和后端都可写可读
+    3. 登录时， 服务器 ctx.session  同时， 自动设置cookie = 
+    USER_SID=session_id 值
+        session(会话对象  id name   大一点， 在后端内存中)  依赖于cookie 而生
+    4. session 中间件  会使用cookie  USER_SID 解析
+    session_id
+        去session池子里  找到属于用户的session  对象ctx.session
+    5. 任何需要鉴权的地方， ctx.session 有没有值  就可以了
 
+- cookie  数据存放在用户的浏览器上，  session 数据放在服务器上
+- cookie 很不安全  HttpOnly   true  js  代码里拿不到 http  还会带上
+    domin  + path  同源策略 / 任何路径
+    Expires  自动过期
+    SameSite 
+    为了安全，  考虑session
+- session 在一定时间内保存在服务器上，  占内存， 多了会影响服务器端性能
+- cookie  单个  不能超过 4K   不能超过20个cookie
+
+- 为什么jwt 这种方案， 新的主流？
+    1. cookie  不安全
+    2. cookie 性能不好
+    3. token 小，生成 json 对象   session要那么多空间
+    
 
 
 
