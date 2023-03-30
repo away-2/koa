@@ -224,7 +224,30 @@ name 有利于列表页单表查询
     1. 不要相信用户的输入
     2. 用户有可能输入js 代码， 甚至是sql
        cookie 盗用  
-    3. <script> 标签  要么删除要么转义
+    3. <script> 标签  要么删除要么转译
+
+- ctx.redirect 底层啥意思？
+    重定向 
+    301 Moved Permanently  永久重定向   http -> https
+    浏览器有缓存 
+    jd.com  360buy.com (老用户)
+    服务器端返回的响应头
+    Status Code  301
+    Location：www.jd.com 
+    302 Found
+    资源临时移动到新的URI上
+    303 See other
+    将POST 请求重定向到GET 请求， 
+    307 Temporary Redirect
+    跟302 差不多， 307状态码不允许浏览器将原本为POST 的请求重定向到GET 请求上
+
+    - http 编码
+    对请求uri  进行编码
+    中文一定会被自动编码  ?name=老用户
+    服务器端  decodeURIComponent
+    
+
+    
 
 
 

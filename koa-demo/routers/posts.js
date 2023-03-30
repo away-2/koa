@@ -2,6 +2,7 @@ const routers = require('koa-router')();
 const controller = require('../controller/c-posts');
 // const router = require('./signup');
 const checkLogin = require('../middlewares/check').checkLogin
+routers.get('/',controller.getRedirectPosts)
 // restful-api ?
 routers.get('/posts',controller.getPosts)
 // 单篇文章详情页

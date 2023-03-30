@@ -64,6 +64,25 @@ exports.findCommentCountById = (id) =>{
     return query(_sql)
 }
 
+exports.findPostCountByName = (name) => {
+    let _sql = `select count(*) as count from posts where name="${name}";`
+    return query(_sql)
+}
+// 分页
+exports.findPostsByUserPage = (name, page) => {
+    let _sql =  `select * from posts where name="${name}" order by id desc limit ${(page-1)*10},1;`
+    return query(_sql)
+}
+
+exports.findAllPostCount = () => {
+    let _sql =  `select count(*) as count from posts;`
+    return query(_sql)
+}
+
+exports.findPostsByPage = (page) => {
+    let _sql =  `select * from posts limit ${(page-1)*10},1;`
+    return query(_sql)
+}
 // exports.findUserData = (name) =>{
 //     let _sql = `select * from users where name="${name}";`
 //     return query(_sql)
